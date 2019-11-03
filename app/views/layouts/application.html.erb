@@ -3,12 +3,19 @@
   <head>
     <title>AieConfiance</title>
     <%= csrf_meta_tags %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <% if flash[:notice] %>
+      <p class="alert alert-info"><%= flash[:notice] %></p>
+    <% end %>
+    <% if flash[:alert] %>
+      <p class="alert alert-danger"><%= flash[:alert] %></p>
+    <% end %>
+    
     <%= yield %>
   </body>
 </html>

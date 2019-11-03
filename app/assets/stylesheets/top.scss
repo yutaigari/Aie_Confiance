@@ -1,0 +1,24 @@
+// Place all the styles related to the top controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.topPage {
+  background-image: image-url('clothing-store-984396_1920.jpg');
+  background-size: cover;
+  &_contents {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    &_title {
+      margin-top: 40vh;
+      color: #fff;
+    }
+    &_btn {
+      display: block;
+      width: 100px;
+      padding-top: 40px;
+      margin: 0 auto;
+    }
+  }
+} 
