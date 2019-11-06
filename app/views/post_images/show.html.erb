@@ -1,0 +1,60 @@
+<div class="PostImage_show">
+  <div class="container">
+    <div class="row">
+      <div class="post_image">
+        <%= image_tag @post_image.post_img_name.url(:thumb) %>
+      </div>
+      <div class="post_content">
+        <ul class="meta-info-cells v4 float-wrapper">
+          <li>
+            <i class="fa fa-user"></i>By<a href="#">
+              <%= link_to @post_image.user.name, user_path(@post_image.user.id ) %></a>
+          </li>
+          <li>
+            <i class="fa fa-calendar"></i><%= @post_image.created_at.strftime('%Y/%m/%d') %>
+          </li>
+          <li>
+            <i class="fa fa-heart"></i>
+            <a href="#">202 いいね</a>
+          </li>
+          <li>
+            <i class="fa fa-comment"></i>
+            <a href="#comments"><%= @post_image.post_comments.count %>件</a>
+          </li>
+        </ul>
+        <div class="post_content_inner mt-20">
+          <p><%= @post_image.content %></p>
+        </div>
+      </div>
+      <ol>
+        <% @post_image.post_comments.each do |post_comment| %>
+          <li class="comment">
+            <div class="comment_body">
+              <div class="comment_avatar">
+                <div class="avatar">
+                  <%= image_tag (@post_image.user.img_name.url(:thumb) ) %>
+                </div>
+              </div>
+              <div class="comment_text">
+                <div class="comment_user"><%= link_to post_comment.user.name, user_path(post_comment.user.id) %></div>
+                <div class="comment_content"><%= post_comment.comment %></div>
+                <div class="comment_date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></div>
+              </div>
+            </div>
+          </li>
+        <% end %>
+        <%= form_for [@post_image, @post_comment] do |f| %>
+          <div class="form_group">
+            <%= f.label "コメント" %>
+            <%= f.text_area :comment, class: "form_control" %>
+          </div>
+          <div class="text_center">
+            <%= f.submit "投稿", class: "btn submitbtn" %>
+          </div>
+        <% end %>
+        </div>
+      </ol>
+      <%= link_to "一覧へ", post_images_path %> 
+    </div>
+  </div>
+</div>

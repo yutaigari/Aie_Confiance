@@ -1,0 +1,23 @@
+<div class="PostNewPage">
+  <div class="header">新規投稿</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <%= form_for(@post_image) do |f| %>
+          <div class="form-group">
+            <%= f.label "wear_img"%>
+            <%= f.file_field :post_img_name %>
+          </div>
+          <div class="form-group">
+            <%= f.label "introduction" %>
+            <%= f.text_area :content, class: "form-control" %>
+          </div>
+          <div class="text-center">
+            <%= f.submit "投稿", class: "btn submitBtn"%>
+          </div>
+        <% end %>
+        <%= link_to "戻る", user_path(current_user) %>
+      </div>
+    </div>
+  </div>
+</div>

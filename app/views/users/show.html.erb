@@ -1,28 +1,47 @@
 <div class='usershowPage'>
   <div class='container'>
     <header class="header">
-      <p class='header_logo'>
-        <%= link_to "wear", "" %>
-      </p>
+      <h3 class='header_logo'>
+        wear
+      </h3>
     </header>
-    <div class='userInfo'>
-      <div class='userInfo_img'>
-        <%= image_tag @user.img_name.url(:thumb) %>
+    <div class="row">
+      <div class="col-md-4">
+        <div class='userInfo'>
+          <div class='userInfo_img'>
+            <%= image_tag @user.img_name.url %>
+          </div>
+          <div class='userInfo_name'>名前 <%= @user.name%></div>
+          <div class='userInfo_selfIntroduction'>紹介 <%= @user.self_introduction %></div>
+        </div>
+        <% if current_user.id == @user.id %>
+          <div class='userAction'>
+            <div class="userAction_edit userAction_common">
+              <%= link_to(content_tag(:i, "", class: 'fas fa-edit fa-2x'), edit_user_registration_path) %>
+              <span>情報を編集</span>
+            </div>
+            <div class="userAction_post userAction_common">
+              <%= link_to(content_tag(:i, "", class: 'fas fa-paint-brush fa-2x'), new_post_image_path) %>
+              <span>投稿</span>
+            </div>
+            <div class='userAction_logout userAction_common'>
+              <%= link_to(content_tag(:i, "", class: 'fas fa-cog fa-2x'), destroy_user_session_path, method: :delete) %>
+              <span>ログアウト</span>
+            </div>
+          </div>
+        <% end %>
       </div>
-      <div class='userInfo_name'><%= @user.name%></div>
-      <div class='userInfo_selfIntroduction'><%= @user.self_introduction %></div>
+      <div class="col-md-8">
+        <div class="userPost">
+          <% if @user.post_images.any? %>
+          <h3>Post (<%= @user.post_images.count %>)</h3>
+          <ol class="usePost_images">
+            <%= render @post_images %>
+          </ol>
+          <%= will_paginate @post_images, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+        <% end %>
+        </div>
+      </div>
     </div>
-    <% if current_user.id == @user.id %>
-      <div class='userAction'>
-        <div class="userAction_edit userAction_common">
-          <%= link_to(content_tag(:i, "", class: 'fas fa-edit fa-2x'), edit_user_registration_path) %>
-          <span>情報を編集</span>
-        </div>
-        <div class='userAction_logout userAction_common'>
-          <%= link_to(content_tag(:i, "", class: 'fas fa-cog fa-2x'), destroy_user_session_path, method: :delete) %>
-          <span>ログアウト</span>
-        </div>
-      </div>
-    <% end %>
   </div>
 </div>
