@@ -1,10 +1,5 @@
 <div class='usershowPage'>
   <div class='container'>
-    <header class="header">
-      <h3 class='header_logo'>
-        wear
-      </h3>
-    </header>
     <div class="row">
       <div class="col-md-4">
         <div class='userInfo'>
@@ -23,10 +18,6 @@
             <div class="userAction_post userAction_common">
               <%= link_to(content_tag(:i, "", class: 'fas fa-paint-brush fa-2x'), new_post_image_path) %>
               <span>投稿</span>
-            </div>
-            <div class='userAction_logout userAction_common'>
-              <%= link_to(content_tag(:i, "", class: 'fas fa-cog fa-2x'), destroy_user_session_path, method: :delete) %>
-              <span>ログアウト</span>
             </div>
           </div>
         <% end %>
