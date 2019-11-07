@@ -14,17 +14,20 @@
             <i class="fa fa-calendar"></i><%= @post_image.created_at.strftime('%Y/%m/%d') %>
           </li>
           <li>
-            <i class="fa fa-heart"></i>
-            <a href="#">202 いいね</a>
+            <%= render partial: 'favorites/favorite', locals: {post_image: @post_image} %>
           </li>
           <li>
-            <i class="fa fa-comment"></i>
-            <a href="#comments"><%= @post_image.post_comments.count %>件</a>
+            <i class="fa fa-comment">
+              コメント<%= @post_image.post_comments.count %>件
+            </i>
           </li>
         </ul>
         <div class="post_content_inner mt-20">
           <p><%= @post_image.content %></p>
         </div>
+        <% if @post_image.user == current_user %>
+          <%= link_to "消去", post_image_path(@post_image), method: :delete %>
+        <% end %>
       </div>
       <ol>
         <% @post_image.post_comments.each do |post_comment| %>
@@ -39,6 +42,9 @@
                 <div class="comment_user"><%= link_to post_comment.user.name, user_path(post_comment.user.id) %></div>
                 <div class="comment_content"><%= post_comment.comment %></div>
                 <div class="comment_date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></div>
+                <% if @post_image.user == current_user %>
+                  <%= link_to "消去", post_image_post_comments_path(@post_image), method: :delete %>
+                <% end %>
               </div>
             </div>
           </li>

@@ -3,7 +3,15 @@
   <%= link_to post_image_path(post_image.id) do %>
     <div class="image"><%= image_tag post_image.post_img_name.url(:thumb) %></div>
   <% end %>
-  <div class="user"><%= link_to post_image.user.name, post_image.user %></div>
-  <div class="content"><%= post_image.content %></div>
-  <div class="timestamp">Posted <%= time_ago_in_words(post_image.created_at) %> ago.</div>
+  <div class="post_image_info">
+    <ul class="v4 float-wrapper">
+      <li class="user">
+        <%= link_to post_image.user.name, post_image.user %>
+        <%= render partial: 'favorites/favorite', locals: {post_image: post_image}%>
+        コメント<%= post_image.post_comments.count %>件
+      </li>
+      <li class="content"><%= post_image.content %></li>
+      <li class="timestamp">Posted <%= time_ago_in_words(post_image.created_at) %> ago.</li>
+    </ul>
+  </div>
 </li>
