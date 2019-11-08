@@ -1,0 +1,15 @@
+<li id="user-<%= user.id %>">
+  <div class="userInfo">
+    <div class="user_image">
+       <%= image_tag user.img_name.url(:thumb) %>
+    </div>
+    <ul>
+      <li class="user_name">
+        <%= link_to user.name, user_path(user) %>
+      </li>
+      <li class="user_introduction">
+        <%= user.self_introduction %>
+      </li>
+    </ul>
+  </div>
+</li>

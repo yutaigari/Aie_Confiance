@@ -12,7 +12,7 @@ class PostImage < ApplicationRecord
   #デフォルトの順序を新しい投稿から順に並べる
   validates :post_img_name, presence: true
   validates :user_id, presence: true
-  validates :content, presence: true, length: { maximum: 140 }
+  validates :content, presence: true, length: { minimum: 2, maximum: 140 }
   
   mount_uploader :post_img_name, PostImgNameUploader
 end

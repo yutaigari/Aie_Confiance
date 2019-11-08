@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   root "top#index"
   
-  resources :users, only: [:show]
+  resources :users, only: [:show, :index]
   resources :post_images, only: [:new, :create, :destroy, :index, :show] do 
     resource :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]

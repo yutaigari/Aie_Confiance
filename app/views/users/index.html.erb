@@ -1,0 +1,17 @@
+<div class="UserIndex">
+  <div class="container">
+    <div class="row">
+      <div class="user">
+        <p>検索</p>
+        <%= form_tag users_path, :method => 'get' do %>
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag "search", :name => nil%>
+        <% end %>
+        <div class="users">
+          <%= render @users %>
+          <%= will_paginate @users, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,11 +1,11 @@
-<div class="PostImage_index">
+<div class="PostImageIndex">
   <div class="container">
     <div class="row">
       <div class="post_image">
         <ol class="post_images">
           <%= render @post_images %>
         </ol>
-        <%= will_paginate @post_images, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+        <%= will_paginate @post_images, previous_label: ' &lt 前へ', next_label: '次へ &gt' %>
       </div>
     </div>
   </div>
