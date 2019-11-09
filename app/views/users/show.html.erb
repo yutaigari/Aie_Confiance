@@ -8,6 +8,10 @@
           </div>
           <div class='userInfo_name'>名前 <%= @user.name%></div>
           <div class='userInfo_selfIntroduction'>紹介 <%= @user.self_introduction %></div>
+          <div class="userInfo_follow">
+            <%= render 'follow_form' %>
+            <%= render 'stats' %>
+          </div>
         </div>
         <% if current_user.id == @user.id %>
           <div class='userAction'>
