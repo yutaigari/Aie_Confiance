@@ -30,9 +30,9 @@
         <div class="userPost">
           <% if @user.post_images.any? %>
           <h3>Post (<%= @user.post_images.count %>)</h3>
-          <ol class="usePost_images">
+          <div class="usePost_images">
             <%= render @post_images %>
-          </ol>
+          </div>
           <%= will_paginate @post_images, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
         <% end %>
         </div>

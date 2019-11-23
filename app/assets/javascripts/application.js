@@ -16,6 +16,19 @@
 //= require bootstrap-sprockets
 //= require_tree 
 
-$(function(){
-  setTimeout("$('.alert').fadeOut('slow')", 3000) 
+
+// message
+$(function() {
+  setTimeout("$('.alert').fadeOut('slow')", 6000) 
 })
+
+//dropdown menu
+$(function() {
+  $(".openBtn").click(function() {
+    $($(this).next(".textArea")).animate(
+    {height: "toggle", opacity: "toggle"},
+    "nomal"
+    );
+  });
+});
+

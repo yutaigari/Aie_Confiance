@@ -2,12 +2,15 @@
   <div class="container">
     <div class="row">
       <div class="user">
-        <p>検索</p>
-        <%= form_tag users_path, :method => 'get' do %>
-          <%= text_field_tag :search, params[:search] %>
-          <%= submit_tag "search", :name => nil%>
-        <% end %>
-        <div class="users">
+        <h2 class="user_headline">User一覧</h2>
+        <div class="user_search">
+          <p class="user_search_name">検索</p>
+          <%= form_tag users_path, :method => 'get' do %>
+            <%= text_field_tag :search, params[:search] %>
+            <%= submit_tag "search", :name => nil%>
+          <% end %>
+        </div>
+        <div class="user_box">
           <%= render @users %>
           <%= will_paginate @users, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
         </div>

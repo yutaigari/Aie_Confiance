@@ -24,7 +24,15 @@
  /* pages */
  @import "top";
  @import "users/show";
- 
+
+// 下から上がってくる要素をブロックする
+// floatによる回り込みを防ぐ
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 body {
   padding-top: 60px;
 }
@@ -32,4 +40,88 @@ body {
 #logo {
  color: #fff;
  font-size: 1.6em;
+}
+//user_imageアイコン
+.image_round {
+ border-radius: 50%;
+ height: 40px;
+ width: 40px;
+ background-size:cover;
+}
+
+.PostImage_image_float li {
+ display: inline-block;
+}
+
+//post_image
+.post_image_headline {
+  border-bottom: 8px solid #f7f7f7;
+  text-align: center;
+  line-height: 0.6;
+}
+.post_image_box {
+ width: 500px;
+ margin: 0 auto;
+}
+.post_image_item {
+ padding: 25px 0;
+ border-bottom: 1px solid #f7f7f7;
+}
+.post_image {
+ float: left;
+ &_info {
+  float: left;
+ }
+}
+.pagination {
+ padding-left: 70px;
+}
+
+//user
+.user_search {
+ width: 300px;
+ margin-left: auto;
+}
+.user_headline {
+ border-bottom: 8px solid #f7f7f7;
+ text-align: center;
+ line-height: 0.6;
+}
+.user_box {
+ width: 500px;
+ margin: 0 auto;
+}
+.user_item {
+ padding: 25px 0;
+ border-bottom: 1px solid #f7f7f7;
+}
+.user_image, .user_info {
+ float: left;
+}
+
+//comment
+.comment_box {
+ padding: 25px 0;
+ border-bottom: 1px solid #f7f7f7;
+}
+.comment_avatar, .comment_info {
+ float: left;
+}
+//post_image/show
+.PostImage_show {
+ padding-top: 60px;
+}
+.PostImage_user {
+ float: left;
+}
+.btn_jaquery {
+ float: right;
+ margin: 10px 80px 0 0;
+}
+//jquery
+.openBtn {
+ cursor: pointer;
+}
+.textArea {
+ display: none;
 }

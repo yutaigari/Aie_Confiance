@@ -1,67 +1,53 @@
 <div class="PostImage_show">
   <div class="container">
     <div class="row">
-      <div class="post_image">
-        <%= image_tag @post_image.post_img_name.url(:thumb) %>
-      </div>
-      <div class="post_content">
-        <ul class="meta-info-cells v4 float-wrapper">
-          <li>
-            <i class="fa fa-user"></i>By<a href="#">
-              <%= link_to @post_image.user.name, user_path(@post_image.user.id ) %></a>
-          </li>
-          <li>
-            <i class="fa fa-calendar"></i><%= @post_image.created_at.strftime('%Y/%m/%d') %>
-          </li>
-          <li>
-            <%= render 'favorites/favorite', post_image: @post_image %>
-          </li>
-          <li>
-            <i class="fa fa-comment">
-              コメント<%= @post_image.post_comments.count %>件
-            </i>
-          </li>
-        </ul>
-        <div class="post_content_inner mt-20">
-          <p><%= @post_image.content %></p>
+      <div class="col-md-6">
+        <div class="PostImage_user">
+          <%= image_tag @post_image.user.img_name.url(:thumb), class: "image_round" %>
+          <%= link_to @post_image.user.name, user_path(@post_image.user)%>
         </div>
-        <% if @post_image.user == current_user %>
-          <%= link_to "消去", post_image_path(@post_image), method: :delete %>
-        <% end %>
+        <div class="btn_jaquery">
+          <% if @post_image.user == current_user %>
+            <%= link_to post_image_path(@post_image), method: :delete do %>
+              <span class="fas fa-trash-alt"></span>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="PostImage_image">
+          <%= image_tag @post_image.post_img_name.url %>
+        </div>
+        <div class="PostImage_content ">
+          <div class="PostImage_favorite">
+            <%= render 'favorites/favorite', post_image: @post_image %>
+          </div>
+          <div class="PostImage_content_inner">
+            <!--simple_format=>rails が改行してくれる-->
+            <p><%= simple_format(@post_image.content) %></p>
+          </div>
+          <div class="PostImage_comment_count">
+            コメント<%= @post_image.post_comments.count %>件
+          </div>
+          <div>
+            <%= @post_image.created_at.strftime('%Y/%m/%d') %>
+          </div>
+        </div>
       </div>
-      <ol>
-        <% @post_image.post_comments.each do |post_comment| %>
-          <li class="comment">
-            <div class="comment_body">
-              <div class="comment_avatar">
-                <div class="avatar">
-                  <%= image_tag (@post_image.user.img_name.url(:thumb) ) %>
-                </div>
-              </div>
-              <div class="comment_text">
-                <div class="comment_user"><%= link_to post_comment.user.name, user_path(post_comment.user.id) %></div>
-                <div class="comment_content"><%= post_comment.comment %></div>
-                <div class="comment_date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></div>
-                <% if @post_image.user == current_user %>
-                  <%= link_to "消去", post_image_post_comments_path(@post_image), method: :delete %>
-                <% end %>
-              </div>
-            </div>
-          </li>
-        <% end %>
+      <div class="col-md-6">
+        <div class="comment_box">
+          <% @post_image.post_comments.each do |post_comment| %>
+            <%= render 'post_comments/comment', post_comment: post_comment, post_image: @post_image %>
+          <% end %>
+        </div>
         <%= form_for [@post_image, @post_comment] do |f| %>
-          <%= render 'layouts/error_messages', model: @post_comment %>
           <div class="form_group">
-            <%= f.label "コメント" %>
+            <%= f.label "コメント" %>   
             <%= f.text_area :comment, class: "form_control" %>
           </div>
           <div class="text_center">
             <%= f.submit "投稿", class: "btn submitbtn" %>
           </div>
         <% end %>
-        </div>
-      </ol>
-      <%= link_to "一覧へ", post_images_path %> 
+      </div>
     </div>
   </div>
 </div>

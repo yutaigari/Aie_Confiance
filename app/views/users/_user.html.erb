@@ -1,15 +1,19 @@
-<li id="user-<%= user.id %>">
-  <div class="userInfo">
-    <div class="user_image">
-       <%= image_tag user.img_name.url(:thumb) %>
-    </div>
-    <ul>
+<!--１つのuserを表示するパーシャル-->
+
+<div class="user_item clearfix" id="user-<%= user.id %>">
+  <div class="user_image">
+     <%= image_tag user.img_name.url(:thumb) %>
+  </div>
+  <div class="user_info">
+    <ul style="list-style: none;">
       <li class="user_name">
         <%= link_to user.name, user_path(user) %>
       </li>
-      <li class="user_introduction">
-        <%= user.self_introduction %>
+      <li class="user_introduction">          
+        <%= truncate(user.self_introduction, length: 15) do %>
+          <%= link_to "続きを読む", user_path(user.id)%>
+        <% end %>
       </li>
     </ul>
   </div>
-</li>
+</div>

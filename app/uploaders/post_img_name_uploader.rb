@@ -13,6 +13,8 @@ class PostImgNameUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
   
+  process resize_to_fit: [500, 400]
+  
   version :thumb do
     process resize_to_fit: [200, 200]
   end

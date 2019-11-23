@@ -1,10 +1,9 @@
 <div class="PostImageIndex">
   <div class="container">
     <div class="row">
-      <div class="post_image">
-        <ol class="post_images">
-          <%= render @post_images %>
-        </ol>
+      <h2 class="post_image_headline">Recent Posts</h2>
+      <div class="post_image_box">
+        <%= render @post_images %>
         <%= will_paginate @post_images, previous_label: ' &lt 前へ', next_label: '次へ &gt' %>
       </div>
     </div>
