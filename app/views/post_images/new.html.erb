@@ -1,8 +1,8 @@
 <div class="PostNewPage">
-  <div class="header">新規投稿</div>
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
+      <h3 class="PostNewPage_headline">新規投稿</h3>
+      <div class="col-md-4 col-md-offset-4">
         <%= form_for (@post_image) do |f| %>
           <div class="form-group">
             <%= f.label "wear_img"%>
@@ -11,6 +11,10 @@
           <div class="form-group">
             <%= f.label "introduction" %>
             <%= f.text_area :content, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label "tag_list", "tag (カンマ区切り)" %>
+            <%= f.text_field :tag_list, value: @post_image.tag_list.join(','), class: "form-control" %>
           </div>
           <div class="text-center">
             <%= f.submit "投稿", class: "btn submitBtn"%>

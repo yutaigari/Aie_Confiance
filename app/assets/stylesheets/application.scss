@@ -32,6 +32,9 @@
   display: block;
   clear: both;
 }
+a {
+ color: #333333;
+}
 
 body {
   padding-top: 60px;
@@ -51,6 +54,14 @@ body {
 
 .PostImage_image_float li {
  display: inline-block;
+}
+
+//PostNewPage,userEditpage
+.PostNewPage_headline, .userEditpage_headline {
+ border-bottom: 8px solid #f7f7f7;
+ text-align: center;
+ line-height: 0.6;
+ margin: 50px 0;
 }
 
 //post_image
@@ -116,8 +127,9 @@ body {
 }
 .btn_jaquery {
  float: right;
- margin: 10px 80px 0 0;
+ margin: 15px 80px 0 0;
 }
+
 //jquery
 .openBtn {
  cursor: pointer;

@@ -1,0 +1,5 @@
+<% tag_list.each do |tag| %>
+  <span class="badge badge-secondary">
+    <%= link_to tag, post_images_path(tag_name: tag), style: "color: #fff;" %>
+  </span>
+<% end %>

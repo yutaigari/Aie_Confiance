@@ -17,7 +17,7 @@
       </li>
     </ui>
     <% if post_comment.user == current_user %>
-      <%= link_to "削除", post_image_post_comments_path(post_comment.post_image_id), method: :delete%>
+      <%= link_to "削除", post_image_post_comments_path(post_comment.post_image_id), method: :delete %>
     <% end %>
   </div>
 </div>

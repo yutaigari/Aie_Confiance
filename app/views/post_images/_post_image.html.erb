@@ -16,7 +16,12 @@
       </li>
       <li class="post_image_evaluation">
         <%= render partial: 'favorites/favorite', locals: {post_image: post_image}%>
-        コメント<%= post_image.post_comments.count %>件
+        <span class="far fa-comment" aria-hidden="true">
+          <%= post_image.post_comments.count %>
+        </span>
+      </li>
+      <li>
+        <%= render partial: 'post_images/post_image_tag', locals: {tag_list: post_image.tag_list}%>
       </li>
       <li class="timestamp">Posted <%= time_ago_in_words(post_image.created_at) %> ago.</li>
     </ul>

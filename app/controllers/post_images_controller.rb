@@ -27,6 +27,10 @@ class PostImagesController < ApplicationController
   
   def index
     @post_images = PostImage.paginate(page: params[:page], per_page: 5)
+    #タグの絞り込み
+    if params[:tag_name]
+      @post_images = @post_images.tagged_with("#{params[:tag_name]}") 
+    end
   end
   
   def show
@@ -36,6 +40,6 @@ class PostImagesController < ApplicationController
   
   private
   def post_image_params
-    params.require(:post_image).permit(:content, :user_id, :post_img_name)
+    params.require(:post_image).permit(:content, :user_id, {post_img_name: []}, :tag_list)
   end
 end

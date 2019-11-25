@@ -29,12 +29,12 @@
       <div class="col-md-8">
         <div class="userPost">
           <% if @user.post_images.any? %>
-          <h3>Post (<%= @user.post_images.count %>)</h3>
-          <div class="usePost_images">
-            <%= render @post_images %>
-          </div>
-          <%= will_paginate @post_images, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
-        <% end %>
+            <h3>Post (<%= @user.post_images.count %>)</h3>
+            <div class="usePost_images">
+              <%= render @post_images %>
+            </div>
+            <%= will_paginate @post_images, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+          <% end %>
         </div>
       </div>
     </div>

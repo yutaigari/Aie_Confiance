@@ -4,12 +4,12 @@
       <div class="col-md-6">
         <div class="PostImage_user">
           <%= image_tag @post_image.user.img_name.url(:thumb), class: "image_round" %>
-          <%= link_to @post_image.user.name, user_path(@post_image.user)%>
+          <%= link_to @post_image.user.name, user_path(@post_image.user) %>
         </div>
         <div class="btn_jaquery">
           <% if @post_image.user == current_user %>
             <%= link_to post_image_path(@post_image), method: :delete do %>
-              <span class="fas fa-trash-alt"></span>
+              <span class="fas fa-trash-alt " aria-hidden="true"></span>
             <% end %>
           <% end %>
         </div>
@@ -17,15 +17,20 @@
           <%= image_tag @post_image.post_img_name.url %>
         </div>
         <div class="PostImage_content ">
-          <div class="PostImage_favorite">
-            <%= render 'favorites/favorite', post_image: @post_image %>
+          <div class="PostImage_evaluation" >
+            <span id="favorites_<%= @post_image.id %>">
+              <%= render partial: 'favorites/favorite', locals: {post_image: @post_image}%>            
+            </span>
+            <span class="far fa-comment " aria-hidden="true">
+              <%= @post_image.post_comments.count %>
+            </span>
           </div>
           <div class="PostImage_content_inner">
             <!--simple_format=>rails が改行してくれる-->
             <p><%= simple_format(@post_image.content) %></p>
           </div>
-          <div class="PostImage_comment_count">
-            コメント<%= @post_image.post_comments.count %>件
+          <div class="PostImage_content_tag">
+            <%= render partial: 'post_images/post_image_tag', locals: {tag_list: @post_image.tag_list}%>
           </div>
           <div>
             <%= @post_image.created_at.strftime('%Y/%m/%d') %>
@@ -33,7 +38,8 @@
         </div>
       </div>
       <div class="col-md-6">
-        <div class="comment_box">
+        <h4 class="comment_headline">コメント</h4>
+        <div id="comment_box">
           <% @post_image.post_comments.each do |post_comment| %>
             <%= render 'post_comments/comment', post_comment: post_comment, post_image: @post_image %>
           <% end %>

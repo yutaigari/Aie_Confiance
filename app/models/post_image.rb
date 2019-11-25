@@ -14,6 +14,7 @@ class PostImage < ApplicationRecord
   validates :user_id, presence: true
   validates :content, presence: true, length: { minimum: 2, maximum: 140 }
   
+  acts_as_taggable  # acts_as_taggable_on :tags のエイリアス
   mount_uploader :post_img_name, PostImgNameUploader
 end
 
