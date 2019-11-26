@@ -32,6 +32,16 @@ $(function() {
   });
 });
 
+//slick
+$(document).on('turbolinks:load', function(){
+  $('.PostImage_image_slider').slick({
+    dots: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    arrows: false,
+  });
+});
+
 
 
 

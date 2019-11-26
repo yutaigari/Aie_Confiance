@@ -20,7 +20,10 @@
  @import "font-awesome-sprockets";
  @import "font-awesome";
  
- 
+ // slick
+ @import "slick-theme";
+ @import "slick";
+
  /* pages */
  @import "top";
  @import "users/show";
@@ -123,11 +126,11 @@ body {
  padding-top: 60px;
 }
 .PostImage_user {
- float: left;
+ display: inline-block;
 }
-.btn_jaquery {
- float: right;
- margin: 15px 80px 0 0;
+.btn_trash {
+ display: inline-block;
+ margin-left: 78%;
 }
 
 //jquery
@@ -137,3 +140,13 @@ body {
 .textArea {
  display: none;
 }
+
+// //slick
+.PostImage_image_slider { 
+ max-width: 600px;
+ margin: 0 auto; 
+}
+.PostImage_image_slider img {
+ width: 100%;
+}
+

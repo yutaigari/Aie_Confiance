@@ -13,8 +13,18 @@ class PostImage < ApplicationRecord
   validates :post_img_name, presence: true
   validates :user_id, presence: true
   validates :content, presence: true, length: { minimum: 2, maximum: 140 }
+  validate :image_count_valid?
   
   acts_as_taggable  # acts_as_taggable_on :tags のエイリアス
-  mount_uploader :post_img_name, PostImgNameUploader
+  mount_uploaders :post_img_name, PostImgNameUploader
+  serialize :post_img_name, JSON
+  
+  private
+  #画像数の制限
+  def image_count_valid?
+    if post_img_name.count > 5
+      errors.add(:post_img_name, "画像数を４個以内に")
+    end
+  end
 end
 

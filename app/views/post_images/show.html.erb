@@ -6,15 +6,17 @@
           <%= image_tag @post_image.user.img_name.url(:thumb), class: "image_round" %>
           <%= link_to @post_image.user.name, user_path(@post_image.user) %>
         </div>
-        <div class="btn_jaquery">
+        <div class="btn_trash">
           <% if @post_image.user == current_user %>
             <%= link_to post_image_path(@post_image), method: :delete do %>
               <span class="fas fa-trash-alt " aria-hidden="true"></span>
             <% end %>
           <% end %>
         </div>
-        <div class="PostImage_image">
-          <%= image_tag @post_image.post_img_name.url %>
+        <div class="PostImage_image_slider">
+          <% @post_image.post_img_name.each do |img| %>
+            <%= image_tag img.url %>
+          <% end %>
         </div>
         <div class="PostImage_content ">
           <div class="PostImage_evaluation" >

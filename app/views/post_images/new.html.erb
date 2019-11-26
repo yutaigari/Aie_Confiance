@@ -6,7 +6,7 @@
         <%= form_for (@post_image) do |f| %>
           <div class="form-group">
             <%= f.label "wear_img"%>
-            <%= f.file_field :post_img_name %>
+            <%= f.file_field :post_img_name, multiple: true %>
           </div>
           <div class="form-group">
             <%= f.label "introduction" %>

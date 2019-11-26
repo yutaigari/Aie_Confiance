@@ -1,7 +1,7 @@
 <!--１つの投稿を表示するパーシャル-->
 <div class="post_image_item clearfix" id="post_image-<%= post_image.id %>">
   <%= link_to post_image_path(post_image.id) do %>
-    <div class="post_image"><%= image_tag post_image.post_img_name.url(:thumb) %></div>
+    <div class="post_image"><%= image_tag post_image.post_img_name[0].url(:thumb) %></div>
   <% end %>
   <div class="post_image_info">
     <ul style="list-style: none;">
@@ -24,6 +24,7 @@
         <%= render partial: 'post_images/post_image_tag', locals: {tag_list: post_image.tag_list}%>
       </li>
       <li class="timestamp">Posted <%= time_ago_in_words(post_image.created_at) %> ago.</li>
+      <li>投稿数<%= post_image.post_img_name.count %></li>
     </ul>
   </div>
 </div>
