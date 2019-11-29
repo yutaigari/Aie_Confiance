@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>AieConfiance</title>
+    <%= csrf_meta_tags %>
+    
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    
-    <title>AieConfiance</title>
-    <%= csrf_meta_tags %>
+    <meta name="current_user_id" content="<%= current_user.id if current_user %>">
     
     <!--slickの読み込み-->
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>

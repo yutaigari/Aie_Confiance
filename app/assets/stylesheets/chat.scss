@@ -1,0 +1,74 @@
+// Place all the styles related to the chat controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #e8e8e8;
+}
+.chatPartner {
+  &_name {
+  margin-top: 10px;
+  text-align: center;
+  }
+  &_img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    & > img {
+      width: 100%;
+    }
+  }
+}
+.messagePartner {
+  padding: 10px 10px 0 0;
+  &_img {
+    width: 30px;
+    height: 30px;
+    border-radius: 30%;
+  }
+}
+.messagesArea {
+  overflow: scroll;
+  height: 68vh;
+  width: 650px;
+  margin: 0 auto;
+ }   
+.commonMessage {
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 0 1.5em 15px;
+  padding: 7px 10px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  border-radius: 10px 10px 10px 0;
+  background: #f1f1f1;
+    & > p {
+      margin: 0;
+  }
+}
+.messageInputForm {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #e8e8e8;
+  padding: 30px 50px 10px 50px;
+  &_input {
+    border: 2px solid #ddd;
+    padding: 10px 250px;
+    border-radius: 15px;
+  }
+}
+@media screen and (max-width:768px) {
+  .messagesArea {    
+    width: 90%;
+    margin: 0 auto;
+  }
+  .messageInputForm_input {
+      padding: 10px 150px;
+  }
+}

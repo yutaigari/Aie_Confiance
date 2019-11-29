@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resource :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
+  resources :chat, only: [:create, :show]
   
   resources :users do
     member do

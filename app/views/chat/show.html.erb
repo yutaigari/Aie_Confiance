@@ -1,0 +1,20 @@
+<div class="chatPage">
+  <div class="container">
+    <div class="row">
+      <div class="header">
+        <div class="chatPartner">
+          <div class="chatPartner_img"><%= image_tag @chat_room_user.img_name.url(:thumb) %></div>
+          <div class="chatPartner_name"><%= @chat_room_user.name %></div>
+        </div>
+      </div>
+      <div class="messagesArea messages">
+        <%= render partial: "chat_messages/chat_message", collection: @chat_messages %>
+      </div>
+      <form class="messageInputForm">
+        <div class="form-group">
+          <input type="text" data-behavior="room_speaker" class="messageInputForm_input" placeholder="メッセージを入力...">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

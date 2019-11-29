@@ -12,6 +12,12 @@
             <%= render 'follow_form' %>
             <%= render 'stats' %>
           </div>
+          <% unless current_user.id == @user.id %>
+            <%= form_tag :chat_index, method: :post do %>
+            <input name="user_id" type="hidden" value="<%= @user.id %>" />
+            <%= submit_tag 'チャットを開く', class: "chatForm_btn" %>
+          <% end %>
+          <% end %>
         </div>
         <% if current_user.id == @user.id %>
           <div class='userAction'>
