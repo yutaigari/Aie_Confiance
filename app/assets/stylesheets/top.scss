@@ -1,24 +1,49 @@
 // Place all the styles related to the top controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 .topPage {
-  background-image: image-url('clothing-store-984396_1920.jpg');
+  background-image: image-url('model-2303361_1920.jpg');
   background-size: cover;
   &_contents {
     height: 100vh;
     display: flex;
     flex-direction: column;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.5);
     &_title {
+      font-family: 'Montserrat Subrayada', sans-serif;
       margin-top: 40vh;
-      color: #fff;
     }
     &_btn {
-      display: block;
       width: 100px;
       padding-top: 40px;
       margin: 0 auto;
     }
   }
-} 
+}
+
+.btn-border-bottom {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  margin: 7px 20px 0 0;
+  padding: 0.25em 0;
+  text-decoration: none;
+  &:before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 4px;
+    top:100%;
+    left: 0;
+    border-radius: 3px;
+    background:#333333;
+    transition: .2s;
+  }
+  &:hover:before {
+    top: -webkit-calc(100% - 3px);
+    top: calc(100% - 3px);
+  }
+}
+
+

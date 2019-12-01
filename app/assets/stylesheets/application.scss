@@ -23,11 +23,16 @@
  // slick
  @import "slick-theme";
  @import "slick";
-
+ 
  /* pages */
  @import "top";
+ @import "registrations/new";
+ @import "registrations/edit";
+ @import "passwords/new";
+ @import "sessions/new";
  @import "users/show";
  @import "chat";
+
 
 // 下から上がってくる要素をブロックする
 // floatによる回り込みを防ぐ
@@ -37,16 +42,21 @@
   clear: both;
 }
 a {
- color: #333333;
-}
-
-body {
-  padding-top: 60px;
+  text-decoration: none;
+  color: #333333;
+  &:hover {
+    text-decoration: none;
+    color: #333333;
+  }
 }
 
 #logo {
  color: #fff;
  font-size: 1.6em;
+}
+
+.main_title {
+  font-family: 'Montserrat Subrayada', sans-serif;
 }
 //user_imageアイコン
 .image_round {
