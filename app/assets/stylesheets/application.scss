@@ -30,6 +30,7 @@
  @import "registrations/edit";
  @import "passwords/new";
  @import "sessions/new";
+ @import "post_images/new";
  @import "users/show";
  @import "chat";
 
@@ -41,6 +42,9 @@
   display: block;
   clear: both;
 }
+body{
+  background-color: #f7f7f7;
+}
 a {
   text-decoration: none;
   color: #333333;
@@ -49,15 +53,21 @@ a {
     color: #333333;
   }
 }
-
+ul {
+  list-style: none;
+}
+.alert {
+  margin-top: 60px;
+}
 #logo {
  color: #fff;
  font-size: 1.6em;
 }
 
 .main_title {
-  font-family: 'Montserrat Subrayada', sans-serif;
+  font-family: 'Noto Serif JP', sans-serif;
 }
+
 //user_imageアイコン
 .image_round {
  border-radius: 50%;

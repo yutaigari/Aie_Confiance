@@ -1,27 +1,28 @@
-<div class="PostNewPage">
+<div class="postNewPage">
+  <header class="header">
+    <h3>新規投稿</h3>
+  </header>
   <div class="container">
-    <div class="row">
-      <h3 class="PostNewPage_headline">新規投稿</h3>
-      <div class="col-md-4 col-md-offset-4">
-        <%= form_for (@post_image) do |f| %>
-          <div class="form-group">
-            <%= f.label "wear_img"%>
-            <%= f.file_field :post_img_name, multiple: true %>
-          </div>
-          <div class="form-group">
-            <%= f.label "introduction" %>
-            <%= f.text_area :content, class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= f.label "tag_list", "tag (カンマ区切り)" %>
-            <%= f.text_field :tag_list, value: @post_image.tag_list.join(','), class: "form-control" %>
-          </div>
-          <div class="text-center">
-            <%= f.submit "投稿", class: "btn submitBtn"%>
-          </div>
-        <% end %>
-        <%= link_to "戻る", user_path(current_user) %>
+    <%= form_for (@post_image) do |f| %>
+      <div class="form-group col-md-8 col-md-offset-2">
+        <%= f.label "投稿画像"%>
+        <%= f.file_field :post_img_name, multiple: true %>
       </div>
+      <div class="form-group col-md-8 col-md-offset-2">
+        <%= f.label "紹介" %>
+        <%= f.text_area :content, maxlength: "140", rows: "10", class: "form-control" %>
+      </div>
+      <div class="form-group col-md-8 col-md-offset-2">
+        <%= f.label "tag_list", "tag (カンマ区切り)" %>
+        <%= f.text_field :tag_list, value: @post_image.tag_list.join(','), class: "form-control", placeholder:"例: fasion,sport,..." %>
+      </div>
+      <div class="text-center col-md-8 col-md-offset-2">
+        <%= f.submit "Post", class: "postnewBtn btn-primary"%>
+        </div>
+      <% end %>
+      <div class="col-md-8 col-md-offset-2">
+        <%= link_to "戻る", user_path(current_user) %>
+      </div>      
     </div>
   </div>
 </div>

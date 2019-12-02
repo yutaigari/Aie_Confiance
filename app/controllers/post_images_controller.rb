@@ -1,6 +1,6 @@
 class PostImagesController < ApplicationController
   before_action :authenticate_user!
-    
+  
   def new
     @post_image = PostImage.new
   end
@@ -42,4 +42,5 @@ class PostImagesController < ApplicationController
   def post_image_params
     params.require(:post_image).permit(:content, :user_id, {post_img_name: []}, :tag_list)
   end
+  
 end

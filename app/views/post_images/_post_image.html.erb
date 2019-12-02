@@ -14,6 +14,7 @@
           <%= link_to "続きを読む", post_image_path(post_image.id) %>
         <% end %>
       </li>
+      <li>投稿数<%= post_image.post_img_name.count %></li>
       <li class="post_image_evaluation">
         <%= render partial: 'favorites/favorite', locals: {post_image: post_image}%>
         <span class="far fa-comment" aria-hidden="true">
@@ -24,7 +25,6 @@
         <%= render partial: 'post_images/post_image_tag', locals: {tag_list: post_image.tag_list}%>
       </li>
       <li class="timestamp">Posted <%= time_ago_in_words(post_image.created_at) %> ago.</li>
-      <li>投稿数<%= post_image.post_img_name.count %></li>
     </ul>
   </div>
 </div>

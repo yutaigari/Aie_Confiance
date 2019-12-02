@@ -11,11 +11,11 @@
         <%= f.file_field :img_name, id: "file_photo" %>
       </label>
       <div class="form-group col-md-8 col-md-offset-2">
-        <label>名前</label>
+        <%= f.label "名前" %>
         <%= f.text_field :name, class: "form-control", placeholder: "名前を入力してください" %>
       </div>
       <div class="form-group col-md-8 col-md-offset-2">
-        <label>Eメールアドレス</label>
+        <%= f.label "Eメールアドレス" %>
         <%= f.email_field :email, class: "form-control", placeholder: "emailを入力してください" ,autocomplete: "email" %>
       </div>
       <div class="form-group col-md-8 col-md-offset-2">
@@ -26,22 +26,19 @@
         <%= f.password_field :password, class: "form-control", placeholder:"パスワードを入力してください", autocomplete: "off" %>
       </div>
       <div class="form-group col-md-8 col-md-offset-2">
-        <label>確認用パスワード</label>
+        <%= f.label "確認用パスワード" %>
         <%= f.password_field :password_confirmation, class:"form-control", placeholder: "パスワードを再度入力してください", autocomplete: "off" %>
       </div>
-      <div class="form-group col-md-8 col-md-offset-2">
-        <div><label for=''>性別</label></div>
-        <div class="form-check form-check-inline">
-          <%= f.radio_button :sex, "男", class: "form-check-input", id: "inlineRadio1" %>
-          <label class="form-check-label" for="inlineRadio1">男</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <%= f.radio_button :sex, "女", class: "form-check-input", id: "inlineRadio2" %>
-          <label class="form-check-label" for="inlineRadio2">女</label>
-        </div>
+      <div class="radio_button col-md-8 col-md-offset-2">
+        <div><label>性別</label></div>
+        <%= f.label "男" %>
+        <%= f.radio_button :sex, "男", class: "form-check-input", id: "inlineRadio1" %>
+        <%= f.label "女" %>
+        <%= f.radio_button :sex, "女", class: "form-check-input", id: "inlineRadio2" %>
+      </div>
       </div>
       <div class="form-group col-md-8 col-md-offset-2">
-        <label>自己紹介文</label>
+        <%= f.label "自己紹介" %>
         <%= text_area :user, :self_introduction, maxlength: "1000", rows: "10", class:"form-control" %>
       </div>
       <div class="text-center col-md-8 col-md-offset-2">

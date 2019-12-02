@@ -19,6 +19,10 @@ class PostImgNameUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [200, 200]
   end
   
+  version :thumb2 do
+    process resize_to_fill: [300, 300, "center"]
+  end
+  
   def size_range
     1..5.megabytes
   end

@@ -1,47 +1,71 @@
-<div class='UserShow'>
+<div class='userShowPage'>
   <div class='container'>
     <div class="row">
-      <div class="col-md-4">
+      <header class="header">
         <div class='userInfo'>
-          <div class='userInfo_img'>
-            <%= image_tag @user.img_name.url %>
+          <div class='userInfo_main'>
+            <%= image_tag @user.img_name.url, class: "userInfo_image" %>
           </div>
-          <div class='userInfo_name'>名前 <%= @user.name%></div>
-          <div class='userInfo_selfIntroduction'>紹介 <%= @user.self_introduction %></div>
-          <div class="userInfo_follow">
-            <%= render 'follow_form' %>
-            <%= render 'stats' %>
-          </div>
+          <section class="userInfo_detail">
+            <div class="userInfo_t">
+              <h2 class="userInfo_t_name"><%= @user.name %></h2>
+            </div>
+            <ul class="userInfo_m">
+              <li class="userInfo_m_li">投稿<%= @user.post_images.count %>件</li>
+              <li class="userInfo_m_li"><%= render 'stats' %></li>
+            </ul>
+            <div class="userInfo_b">
+              <span class='userInfo_b_selfIntroduction'><%= @user.self_introduction %></span>
+            </div>
+          </section>
           <% unless current_user.id == @user.id %>
-            <%= form_tag :chat_index, method: :post do %>
-            <input name="user_id" type="hidden" value="<%= @user.id %>" />
-            <%= submit_tag 'チャットを開く', class: "chatForm_btn" %>
-          <% end %>
-          <% end %>
-        </div>
-        <% if current_user.id == @user.id %>
-          <div class='userAction'>
-            <div class="userAction_edit userAction_common">
-              <%= link_to(content_tag(:i, "", class: 'fas fa-edit fa-2x'), edit_user_registration_path) %>
-              <span>アカウント編集</span>
+            <div class="userSend">
+              <span class="userSend_message">
+                <%= form_tag :chat_index, method: :post do %>
+                  <input name="user_id" type="hidden" value="<%= @user.id %>" />
+                  <%= submit_tag 'メッセージを送る', class: "btn btn-default" %>
+                <% end %>
+              </span>
+              <span class="userSend_follow">
+                <%= render 'follow_form' %>
+              </span>
             </div>
-            <div class="userAction_post userAction_common">
-              <%= link_to(content_tag(:i, "", class: 'fas fa-paint-brush fa-2x'), new_post_image_path) %>
-              <span>投稿</span>
+          <% else %>
+            <div class='userAction'>
+              <span class="userAction_edit">
+                <%= link_to "プロフィール編集", edit_user_registration_path, class: "btn btn-default" %>
+              </span>
+              <span class="userAction_post">
+                <%= link_to new_post_image_path do %>
+                  <span class="far fa-plus-square">投稿</span>
+                <% end %>
+              </span>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </header>
       </div>
-      <div class="col-md-8">
-        <div class="userPost">
-          <% if @user.post_images.any? %>
-            <h3>Post (<%= @user.post_images.count %>)</h3>
-            <div class="usePost_images">
-              <%= render @post_images %>
-            </div>
-            <%= will_paginate @post_images, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
-          <% end %>
+      <div class="row">
+        <div class="userPost_head">
+          <span class="fas fa-th userPost_head_logo"></span>投稿一覧
         </div>
+      </div>
+      <div class="row">
+        <% if @post_images.any? %>
+            <article class="usePost_article">
+              <% @post_images.each do |post_image| %>
+                <%= link_to post_image_path(post_image.id) do %>
+                  <div class="userPost_image col-md-4" id="post_image-<%= post_image.id %>">
+                    <% if post_image.post_img_name[1] %>
+                      <span class="userPost_icon"><i class="far fa-clone fa-2x"></i></span>
+                    <% end %>
+                    <%= image_tag post_image.post_img_name[0].url(:thumb2) %>
+                  </div>
+                <% end %>
+              <% end %>
+              <!--< render @post_images %>-->
+            </article>
+            <%= will_paginate @post_images, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+        <% end %>
       </div>
     </div>
   </div>
