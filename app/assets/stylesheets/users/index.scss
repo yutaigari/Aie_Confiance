@@ -1,0 +1,31 @@
+.userIndexPage {
+  margin-top: 60px;
+}
+.user_image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.user {
+  &_headline {
+    border-bottom: 8px solid #eeeeee;
+    text-align: center;
+    line-height: 0.6;
+  }
+  &_search {
+    width: 300px;
+    margin-left: auto;
+  }
+  &_box {
+    width: 500px;
+    margin: 0 auto; 
+  }
+  &_item {
+    padding: 25px 0;
+    border-bottom: 1px solid #ccc;
+  }
+  &_avatar, &_info {
+    float: left;
+  }
+}
+

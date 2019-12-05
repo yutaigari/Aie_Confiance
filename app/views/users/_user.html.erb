@@ -1,11 +1,13 @@
 <!--１つのuserを表示するパーシャル-->
 
 <div class="user_item clearfix" id="user-<%= user.id %>">
-  <div class="user_image">
-     <%= image_tag user.img_name.url(:thumb) %>
+  <div class="user_avatar">
+    <%= link_to user_path(user) do %>
+     <%= image_tag user.img_name.url(:thumb), class: "user_image" %>
+    <% end %>
   </div>
   <div class="user_info">
-    <ul style="list-style: none;">
+    <ul>
       <li class="user_name">
         <%= link_to user.name, user_path(user) %>
       </li>

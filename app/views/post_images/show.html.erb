@@ -1,59 +1,69 @@
-<div class="PostImage_show">
+<div class="postImageShow">
   <div class="container">
     <div class="row">
-      <div class="col-md-6">
-        <div class="PostImage_user">
-          <%= image_tag @post_image.user.img_name.url(:thumb), class: "image_round" %>
-          <%= link_to @post_image.user.name, user_path(@post_image.user) %>
-        </div>
-        <div class="btn_trash">
-          <% if @post_image.user == current_user %>
-            <%= link_to post_image_path(@post_image), method: :delete do %>
-              <span class="fas fa-trash-alt " aria-hidden="true"></span>
+      <div class="post clearfix">
+        <div class="post_main">
+          <ul>
+            <li class="post_user">
+              <%= image_tag @post_image.user.img_name.url(:thumb), class: "image_round" %>
+              <%= link_to @post_image.user.name, user_path(@post_image.user) %>
+            </li>
+            <% if @post_image.user == current_user %>
+              <li class="btn_trash">
+                <%= link_to post_image_path(@post_image), method: :delete do %>
+                  <span class="fas fa-trash-alt " aria-hidden="true"></span>
+                <% end %>
+              </li>
             <% end %>
-          <% end %>
-        </div>
-        <div class="PostImage_image_slider">
-          <% @post_image.post_img_name.each do |img| %>
-            <%= image_tag img.url %>
-          <% end %>
-        </div>
-        <div class="PostImage_content ">
-          <div class="PostImage_evaluation" >
-            <span id="favorites_<%= @post_image.id %>">
-              <%= render partial: 'favorites/favorite', locals: {post_image: @post_image}%>            
-            </span>
-            <span class="far fa-comment " aria-hidden="true">
-              <%= @post_image.post_comments.count %>
-            </span>
-          </div>
-          <div class="PostImage_content_inner">
-            <!--simple_format=>rails が改行してくれる-->
-            <p><%= simple_format(@post_image.content) %></p>
-          </div>
-          <div class="PostImage_content_tag">
-            <%= render partial: 'post_images/post_image_tag', locals: {tag_list: @post_image.tag_list}%>
-          </div>
-          <div>
-            <%= @post_image.created_at.strftime('%Y/%m/%d') %>
-          </div>
+            <li class="post_image_slider">
+              <% @post_image.post_img_name.each do |img| %>
+                <%= image_tag img.url %>
+              <% end %>
+            </li>
+            <li class="post_evaluation" >
+              <span id="favorites_<%= @post_image.id %>">
+                <%= render partial: 'favorites/favorite', locals: {post_image: @post_image}%>            
+              </span>
+              <span class="far fa-comment " aria-hidden="true">
+                <%= @post_image.post_comments.count %>
+              </span>
+            </li>
+            <li class="post_content">
+              <!--simple_format=>rails が改行してくれる-->
+              <p><%= simple_format(@post_image.content) %></p>
+            </li>
+            <li class="post_content_tag">
+              <%= render partial: 'post_images/post_image_tag', locals: {tag_list: @post_image.tag_list}%>
+            </li>
+            <li class="post_content_timestamp">
+              <%= @post_image.created_at.strftime('%Y/%m/%d') %>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="col-md-6">
-        <h4 class="comment_headline">コメント</h4>
-        <div id="comment_box">
-          <% @post_image.post_comments.each do |post_comment| %>
-            <%= render 'post_comments/comment', post_comment: post_comment, post_image: @post_image %>
-          <% end %>
+      <div class="comment">
+        <div class="comment-list" id="comments">
+          <div class="comment_headline">
+            <h4 class="comment_count"><%= @post_image.post_comments.count %>件コメント</h4>
+          </div>
+          <div id="comment_box">
+            <% @post_image.post_comments.each do |post_comment| %>
+              <%= render 'post_comments/comment', post_comment: post_comment, post_image: @post_image %>
+            <% end %>
+          </div>
         </div>
         <%= form_for [@post_image, @post_comment] do |f| %>
-          <div class="form_group">
-            <%= f.label "コメント" %>   
-            <%= f.text_area :comment, class: "form_control" %>
+          <div class="comment_tit">
+            <h3><span class="comment_tit_t">コメント</span></h3>
           </div>
-          <div class="text_center">
-            <%= f.submit "投稿", class: "btn submitbtn" %>
-          </div>
+          <div class="comment_form">
+            <div class="form_group">
+              <%= f.text_area :comment, class: "form_control comment_area", placeholder: "コメントをここに" %>
+            </div>
+            <div class="text_center">
+              <%= f.submit "送信する", class: "btn btn-primary" %>
+            </div>
+         </div>
         <% end %>
       </div>
     </div>

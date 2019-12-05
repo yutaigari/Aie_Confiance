@@ -22,19 +22,9 @@ $(function() {
   setTimeout("$('.alert').fadeOut('slow')", 6000) 
 })
 
-//dropdown menu
-$(function() {
-  $(".openBtn").click(function() {
-    $($(this).next(".textArea")).animate(
-    {height: "toggle", opacity: "toggle"},
-    "nomal"
-    );
-  });
-});
-
 //slick
 $(document).on('turbolinks:load', function(){
-  $('.PostImage_image_slider').slick({
+  $('.post_image_slider').slick({
     dots: true,
     autoplay: true,
     autoplaySpeed: 4000,

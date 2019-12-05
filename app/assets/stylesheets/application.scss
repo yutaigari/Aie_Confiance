@@ -31,12 +31,13 @@
  @import "passwords/new";
  @import "sessions/new";
  @import "post_images/new";
+ @import "post_images/index";
+ @import "post_images/show";
  @import "users/show";
+ @import "users/show_follow";
+ @import "users/index";
  @import "chat";
 
-
-// 下から上がってくる要素をブロックする
-// floatによる回り込みを防ぐ
 .clearfix::after {
   content: "";
   display: block;
@@ -63,7 +64,6 @@ ul {
  color: #fff;
  font-size: 1.6em;
 }
-
 .main_title {
   font-family: 'Noto Serif JP', sans-serif;
 }
@@ -74,98 +74,18 @@ ul {
  height: 40px;
  width: 40px;
  background-size:cover;
-}
-
-.PostImage_image_float li {
- display: inline-block;
-}
-
-//PostNewPage,userEditpage
-.PostNewPage_headline, .userEditpage_headline {
- border-bottom: 8px solid #f7f7f7;
- text-align: center;
- line-height: 0.6;
- margin: 50px 0;
+ border: 1px solid #ccc;
 }
 
 //post_image
-.post_image_headline {
-  border-bottom: 8px solid #f7f7f7;
-  text-align: center;
-  line-height: 0.6;
-}
-.post_image_box {
- width: 500px;
- margin: 0 auto;
-}
-.post_image_item {
- padding: 25px 0;
- border-bottom: 1px solid #f7f7f7;
-}
-.post_image {
- float: left;
- &_info {
-  float: left;
- }
-}
 .pagination {
  padding-left: 70px;
 }
 
-//user
-.user_search {
- width: 300px;
- margin-left: auto;
-}
-.user_headline {
- border-bottom: 8px solid #f7f7f7;
- text-align: center;
- line-height: 0.6;
-}
-.user_box {
- width: 500px;
- margin: 0 auto;
-}
-.user_item {
- padding: 25px 0;
- border-bottom: 1px solid #f7f7f7;
-}
-.user_image, .user_info {
- float: left;
-}
-
-//comment
-.comment_box {
- padding: 25px 0;
- border-bottom: 1px solid #f7f7f7;
-}
-.comment_avatar, .comment_info {
- float: left;
-}
-//post_image/show
-.PostImage_show {
- padding-top: 60px;
-}
-.PostImage_user {
- display: inline-block;
-}
-.btn_trash {
- display: inline-block;
- margin-left: 78%;
-}
-
-//jquery
-.openBtn {
- cursor: pointer;
-}
-.textArea {
- display: none;
-}
-
 // //slick
-.PostImage_image_slider { 
- max-width: 600px;
- margin: 0 auto; 
+.post_image_slider { 
+ max-width: 450px;
+ margin: 0 auto;
 }
 .PostImage_image_slider img {
  width: 100%;

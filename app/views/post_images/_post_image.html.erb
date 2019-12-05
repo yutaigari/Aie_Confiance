@@ -1,30 +1,39 @@
 <!--１つの投稿を表示するパーシャル-->
-<div class="post_image_item clearfix" id="post_image-<%= post_image.id %>">
-  <%= link_to post_image_path(post_image.id) do %>
-    <div class="post_image"><%= image_tag post_image.post_img_name[0].url(:thumb) %></div>
-  <% end %>
-  <div class="post_image_info">
-    <ul style="list-style: none;">
-      <li class="post_image_user">
+<div class="postImage_item clearfix" id="post_image-<%= post_image.id %>">
+  <div class="postImage_info">
+    <ul>
+      <li class="postImage_user">
+        <%= link_to user_path(post_image.user) do %>
+          <%= image_tag post_image.user.img_name.url(:thumb), class: "image_round" %>
+        <% end %>
         <%= link_to post_image.user.name, post_image.user %>
       </li>
-      <!--truncate => 長い文字列を省略できる-->
-      <li class="post_image_content">
-        <%= truncate(post_image.content, length: 15) do %>
-          <%= link_to "続きを読む", post_image_path(post_image.id) %>
+      <li class="postImage_image">
+        <%= link_to post_image_path(post_image.id) do %>
+          <div class="postImage_img">
+            <% if post_image.post_img_name[1] %>
+              <span class="postImage_icon"><i class="far fa-clone fa-2x" aria-hidden="true"></i></span>
+            <% end %>
+            <%= image_tag post_image.post_img_name[0].url(:thumb2) %>
+          </div>
         <% end %>
       </li>
-      <li>投稿数<%= post_image.post_img_name.count %></li>
-      <li class="post_image_evaluation">
+      <li class="postImage_evaluation">
         <%= render partial: 'favorites/favorite', locals: {post_image: post_image}%>
         <span class="far fa-comment" aria-hidden="true">
           <%= post_image.post_comments.count %>
         </span>
       </li>
-      <li>
+      <!--truncate => 長い文字列を省略できる-->
+      <li class="postImage_content">
+        <%= truncate(post_image.content, length: 15) do %>
+          <%= link_to "続きを読む", post_image_path(post_image.id) %>
+        <% end %>
+      </li>
+      <li class="postImage_tag">
         <%= render partial: 'post_images/post_image_tag', locals: {tag_list: post_image.tag_list}%>
       </li>
-      <li class="timestamp">Posted <%= time_ago_in_words(post_image.created_at) %> ago.</li>
+      <li class="postImage_timestamp">Posted <%= time_ago_in_words(post_image.created_at) %> ago.</li>
     </ul>
   </div>
 </div>

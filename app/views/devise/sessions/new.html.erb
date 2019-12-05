@@ -9,12 +9,10 @@
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, class: "form-control", autocomplete: "email", placeholder: "emailを入力してください" %>
       </div>
-
       <div class="form-group col-md-8 col-md-offset-2">
         <%= f.label :password %><br />
         <%= f.password_field :password, class: "form-control", autocomplete: "off", placeholder: "パスワードを入力してください" %>
       </div>
-
       <div class="text-center col-md-8 col-md-offset-2">
         <%= f.submit "LOGIN", class: "signinBtn btn-primary" %>
       </div>

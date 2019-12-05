@@ -1,24 +1,22 @@
 <!--commentのパーシャル-->
-<!--commetの投稿内容-->
 <div class="comment_item clearfix" id="comment-<%= post_comment.id%>">
   <div class="comment_avatar">
-    <%= image_tag (post_image.user.img_name.url(:thumb) ) %>
+    <%= link_to user_path(post_comment.user.id) do %>
+      <%= image_tag (post_image.user.img_name.url(:thumb) ), class: "image_round" %>
+    <% end %>
   </div>
   <div class="comment_info">
-    <ul style="list-style: none;">
-      <li class="comment_userName">
-        <%= link_to post_comment.user.name, user_path(post_comment.user.id) %>
-      </li>
+    <ul class="comment_info_left">
       <li class="comment_content">
         <%= simple_format(post_comment.comment) %>
       </li>
       <li class="comment_date">
         <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+        <% if post_comment.user == current_user %>
+          <%= link_to "削除", post_image_post_comments_path(post_comment.post_image_id), method: :delete %>
+        <% end %>
       </li>
     </ui>
-    <% if post_comment.user == current_user %>
-      <%= link_to "削除", post_image_post_comments_path(post_comment.post_image_id), method: :delete %>
-    <% end %>
   </div>
 </div>
 

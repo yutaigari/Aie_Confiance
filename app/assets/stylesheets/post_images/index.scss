@@ -1,0 +1,31 @@
+.postImageIndex {
+  margin-top: 60px;
+}
+.postImage_headline {
+  border-bottom: 8px solid #eeeeee;
+  text-align: center;
+  line-height: 0.6;
+  margin: 50px 0;
+}
+.postImage_info {
+  background-color: #fff;
+  width: 500px;
+  margin: 10px auto;
+  padding: 20px 0 10px 0; 
+}
+.postImage_img {
+  width: 70%;
+  margin: 10px auto;
+}
+.postImage_icon {
+  position: absolute;
+  margin-left: 260px;
+  margin-top: 10px;
+  color: #fff;
+}
+.postImage {
+  &_evaluation, &_content, &_tag, &_timestamp {
+    width: 320px;
+    margin: 0 auto;
+  }
+}

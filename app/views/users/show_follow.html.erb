@@ -1,10 +1,15 @@
-<div class="container">
-  <div class="row">
-    <% if @users.any? %>
-      <ul class="users follow">
-        <%= render @users %>
-      </ul>
-      <%= will_paginate %>
-    <% end %>
+<div class="userFollowPage">
+  <div class="container">
+    <div class="row">
+      <div class="follow_user">
+        <h2 class="user_headline">User一覧</h2>
+        <% if @users.any? %>
+          <div class="user_box">
+            <%= render @users %>
+            <%= will_paginate @users, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
