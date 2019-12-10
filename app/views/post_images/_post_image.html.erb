@@ -19,7 +19,9 @@
         <% end %>
       </li>
       <li class="postImage_evaluation">
-        <%= render partial: 'favorites/favorite', locals: {post_image: post_image}%>
+        <span id="favorites_<%= post_image.id %>">
+          <%= render partial: 'favorite', locals: {post_image: post_image} %>
+        </span>
         <span class="far fa-comment" aria-hidden="true">
           <%= post_image.post_comments.count %>
         </span>

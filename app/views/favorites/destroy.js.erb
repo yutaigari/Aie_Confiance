@@ -1,2 +1,1 @@
-<!--favorite ajax-->
-<!--$('#favorites_< @image_post.id %>').html("< j(render partial: 'favorites/favorite', locals: {post_image: @post_image}) %>");-->
+$('#favorites_<%= @post_image.id %>').html("<%= escape_javascript(render partial: 'post_images/favorite', locals: {post_image: @post_image}) %>");
